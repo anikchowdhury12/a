@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahatab Uddin - Dynamic Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a, #090d16);
+            color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Profile Glow & Floating Animation */
+        .profile-glow {
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.6), 0 0 50px rgba(59, 130, 246, 0.3);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+
+        /* Dynamic Canvas Layer */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-start sm:items-center justify-center p-3 sm:p-4 relative">
+
+    <!-- Background Particle Animation Canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Main Portfolio Card -->
+    <main class="relative z-10 max-w-lg w-full min-w-0 bg-slate-900/60 backdrop-blur-xl border border-cyan-500/30 rounded-3xl p-5 sm:p-8 shadow-2xl text-center my-4 sm:my-8">
+        
+        <!-- Profile Picture Section -->
+        <div class="relative w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-6">
+            <img src="./WhatsApp%20Image%202026-11-05%20at%2010.00.47%20PM.jpeg" 
+                 alt="Mahatab Uddin" 
+                 class="w-full h-full object-cover rounded-full border-4 border-cyan-400 profile-glow">
+        </div>
+
+        <!-- Name & Bio -->
+        <h1 class="text-2xl sm:text-3xl font-extrabold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+            Mahatab Uddin
+        </h1>
+        <p class="text-cyan-400 font-semibold text-sm uppercase tracking-wider mt-1 mb-6">
+            Junior Web Developer & Office Application Specialist
+        </p>
+
+        <!-- Address Badge -->
+        <div class="inline-flex max-w-full items-center gap-2 bg-slate-800/80 border border-slate-700/60 px-4 py-1.5 rounded-full text-xs text-slate-300 mb-6">
+            <i class="fa-solid fa-location-dot text-cyan-400"></i>
+            <span class="min-w-0 break-words">Feni, Chittagong, Bangladesh</span>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="space-y-3 bg-slate-950/50 p-4 rounded-2xl border border-slate-800 text-sm text-left mb-6">
+            <a href="mailto:mahtab64320@gmail.com" class="flex min-h-11 flex-col items-start justify-center gap-1 p-2 rounded-lg hover:bg-slate-800/60 cursor-pointer transition sm:flex-row sm:items-center sm:justify-between">
+                <span class="text-slate-400 flex items-center gap-2">
+                    <i class="fa-solid fa-envelope text-cyan-400"></i> Gmail:
+                </span>
+                <span class="max-w-full break-all font-medium text-slate-200">mahtab64320@gmail.com</span>
+            </a>
+            <a href="tel:01806789000" onclick="copyText('01806789000', 'Phone Number')" class="flex min-h-11 flex-col items-start justify-center gap-1 p-2 rounded-lg hover:bg-slate-800/60 cursor-pointer transition border-t border-slate-800/80 sm:flex-row sm:items-center sm:justify-between">
+                <span class="text-slate-400 flex items-center gap-2">
+                    <i class="fa-solid fa-phone text-cyan-400"></i> Phone:
+                </span>
+                <span class="font-medium text-slate-200">01806789000</span>
+            </a>
+        </div>
+
+        <!-- Office Applications & Skills Section -->
+        <div class="mb-6 text-left">
+            <h2 class="text-xs uppercase tracking-wider font-bold text-slate-400 mb-3 flex items-center gap-2">
+                <i class="fa-solid fa-laptop-code text-cyan-400"></i> Office Applications & Skills
+            </h2>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+                <div class="flex items-center gap-2 bg-slate-800/50 border border-slate-700/50 p-2.5 rounded-xl">
+                    <i class="fa-solid fa-file-excel text-emerald-400 text-base"></i>
+                    <div class="min-w-0">
+                        <p class="font-semibold text-slate-200">MS Excel</p>
+                        <p class="text-[10px] text-slate-400">Data & Analysis</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 bg-slate-800/50 border border-slate-700/50 p-2.5 rounded-xl">
+                    <i class="fa-solid fa-file-word text-blue-400 text-base"></i>
+                    <div class="min-w-0">
+                        <p class="font-semibold text-slate-200">MS Word</p>
+                        <p class="text-[10px] text-slate-400">Documentation</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 bg-slate-800/50 border border-slate-700/50 p-2.5 rounded-xl">
+                    <i class="fa-solid fa-file-powerpoint text-orange-400 text-base"></i>
+                    <div class="min-w-0">
+                        <p class="font-semibold text-slate-200">PowerPoint</p>
+                        <p class="text-[10px] text-slate-400">Presentation</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 bg-slate-800/50 border border-slate-700/50 p-2.5 rounded-xl">
+                    <i class="fa-solid fa-database text-purple-400 text-base"></i>
+                    <div class="min-w-0">
+                        <p class="font-semibold text-slate-200">MS Access</p>
+                        <p class="text-[10px] text-slate-400">Database</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Media Buttons Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <a href="https://www.facebook.com/share/1J7f1keNsE/" target="_blank" rel="noopener noreferrer" class="flex min-h-11 items-center justify-center gap-2 bg-slate-800 hover:bg-blue-600 text-white py-2.5 rounded-xl font-medium text-xs border border-slate-700 hover:border-blue-400 transition duration-300 transform hover:-translate-y-1">
+                <i class="fa-brands fa-facebook text-base"></i> Facebook
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="flex min-h-11 items-center justify-center gap-2 bg-slate-800 hover:bg-pink-600 text-white py-2.5 rounded-xl font-medium text-xs border border-slate-700 hover:border-pink-400 transition duration-300 transform hover:-translate-y-1">
+                <i class="fa-brands fa-instagram text-base"></i> Instagram
+            </a>
+            <a href="https://www.tiktok.com/@mahtab83099?_r=1&_t=ZS-9B9o8ikIWqj" target="_blank" rel="noopener noreferrer" class="flex min-h-11 items-center justify-center gap-2 bg-cyan-500/15 hover:bg-cyan-400 text-cyan-200 hover:text-slate-950 py-2.5 rounded-xl font-medium text-xs border border-cyan-400 shadow-lg shadow-cyan-500/20 transition duration-300 transform hover:-translate-y-1">
+                <i class="fa-brands fa-tiktok text-base"></i> TikTok
+            </a>
+        </div>
+    </main>
+
+    <!-- Notification Toast Popup -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-cyan-500 text-slate-950 font-bold px-4 py-2.5 rounded-xl shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-50 text-sm flex items-center gap-2">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toast-message">Copied!</span>
+    </div>
+
+    <!-- JavaScript logic -->
+    <script>
+        // Click to Copy Logic with Toast Notification
+        function copyText(text, label) {
+            navigator.clipboard.writeText(text);
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.innerText = label + ' Copied to Clipboard!';
+            
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 2500);
+        }
+
+        // Floating Background Particles Animation
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.color = `rgba(6, 182, 212, ${Math.random() * 0.5 + 0.2})`;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < 60; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+    </script>
+</body>
+</html>
